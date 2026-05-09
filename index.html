@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KinderKit</title>
+    <meta name="theme-color" content="#f8fafc" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="/hero.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            },
+            colors: {
+              slate: {
+                50: '#F8FAFC',
+                100: '#F1F5F9', 
+                200: '#E2E8F0',
+                300: '#CBD5E1',
+                400: '#94A3B8',
+                500: '#64748B',
+                600: '#475569',
+                700: '#334155',
+                800: '#1E293B',
+                900: '#0F172A',
+                950: '#020617',
+              },
+              indigo: {
+                50: '#EEF2FF',
+                100: '#E0E7FF',
+                500: '#6366F1',
+                600: '#4F46E5',
+                700: '#4338CA',
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'blob': 'blob 7s infinite',
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              'pulse-slow': {
+                '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+              },
+              'blob': {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              'fadeInUp': {
+                '0%': { opacity: 0, transform: 'translateY(20px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+      if (typeof process === 'undefined') {
+        window.process = { env: {} };
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fredoka:wght@300;400;500;600;700&family=Schoolbell&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      .font-school { font-family: 'Schoolbell', cursive; }
+      .font-block { font-family: 'Fredoka', sans-serif; }
+      .font-comic-sans { font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive; }
+      .font-calibri { font-family: 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', Arial, sans-serif; }
+      
+      @keyframes softFadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes softSlideUp { from { opacity: 0; transform: translate3d(0, 15px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+      @keyframes softScaleOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.98); } }
+
+      .animate-fade-in { animation: softFadeIn 0.5s ease-out forwards; will-change: opacity; }
+      .animate-pop-in { animation: softSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
+      .animate-fade-out { animation: softScaleOut 0.2s ease-in forwards; }
+      
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .print-only { display: none; }
+      @media print {
+        .no-print { display: none !important; }
+        .print-only { display: block !important; }
+        body { background: white !important; color: black !important; }
+        @page { margin: 0; size: A4; }
+      }
+      
+      html, body { height: 100%; overscroll-behavior: none; }
+
+      .export-sandbox {
+        position: fixed !important;
+        top: 0 !important;
+        left: -9999px !important;
+        background: white !important;
+        color: black !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    </style>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1",
+    "jspdf": "https://esm.sh/jspdf@2.5.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-CU_Ake1w.js"></script>
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body class="bg-slate-50 text-slate-900 fixed inset-0 overflow-hidden transition-colors duration-300 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[1000] focus:bg-indigo-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
+      Hoppa till innehåll
+    </a>
+    <main id="main-content" class="h-full w-full">
+      <div id="root" class="h-full w-full"></div>
+    </main>
+</body>
+</html>
